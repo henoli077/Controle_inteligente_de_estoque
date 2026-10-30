@@ -124,6 +124,14 @@ function botaoCancelar() {
     document.getElementById("valor").value = "";
 }
 
+function removerItem(index) {
+    if (confirm("Tem certeza que deseja apagar o item do estoque?")){
+        listaEstoque.splice(index, 1);
+        salvarNoStorage();
+        renderizarTabela();
+    }
+}
+
 function deletaLista() {
     if (confirm("Tem certeza que deseja apagar toda a lista de estoque?")) {
         listaEstoque = [];
