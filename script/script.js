@@ -26,3 +26,16 @@ function adicionaDados() {
     renderizarTabela();
     botaoCancelar();
 }
+
+function salvarNoStorage() {
+    localStorage.setItem("itens_compra", JSON.stringify(listaEstoque));
+    localStorage.setItem("id", JSON.stringify(id));
+}
+
+function botaoCancelar() {
+    document.getElementById("nome").value = "";
+    document.getElementById("categoria").value = "";
+    document.getElementById("qtd").value = "";
+    document.getElementById("qtdMin").value = "";
+    document.getElementById("valor").value = "";
+}
