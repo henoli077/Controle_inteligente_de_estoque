@@ -59,3 +59,11 @@ function botaoCancelar() {
     document.getElementById("qtdMin").value = "";
     document.getElementById("valor").value = "";
 }
+
+function deletaLista() {
+    if (confirm("Tem certeza que deseja apagar toda a lista de estoque?")) {
+        listaEstoque = [];
+        localStorage.removeItem("itens_compra");
+        renderizarTabela();
+    }
+}
