@@ -58,6 +58,43 @@ function renderizarTabela() {
     if (listaEstoque.length === 0) {
         tbody.innerHTML = '<tr><td colspan="8">Nenhum item na lista</td></tr>';
     }
+
+    listaEstoque.forEach((item, index) => {
+        const subtotal = item.qtd * item.valor;
+        valorTotalGeral += subtotal;
+
+        if(item.qtd > item.qtdMin){
+            situacao = "Estoque normal";
+        }
+        else if(item.qtd <= item.qtdMin && item.qtd > 0){
+            situacao = "Estoque crítico"
+            estoqueCritico += 1;
+        }
+        else{
+            situacao = "Sem estoque"
+            semEstoque += 1;
+        }
+
+        const tr = document.createElement("tr");
+        tr.innerHTML = `
+        <td>${item.ID}</td>
+        <td>${item.nome}</td>
+        <td>${item.categoria}</td>
+        <td>${item.qtd}</td>
+        <td>${situacao}</td>
+        <td>R$ ${item.valor.toLocaleString('pt-BR', {minimumFractionDigits: 2})}</td>
+        <td>R$ ${subtotal.toLocaleString('pt-BR', {minimumFractionDigits: 2})}</td>
+        <td>
+        <button onclick="editarItem(${index}) class="btn-edit">
+            Editar
+        </button>
+        <button onclick="removerItem(${index})" class="btn-delete-all">
+            X
+        </button>
+        </td>
+        `;
+        tbody.appendChild(tr);
+    });
 }
 
 function salvarNoStorage() {
