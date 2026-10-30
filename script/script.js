@@ -10,6 +10,26 @@ function adicionaDados() {
     const qtdMinInput = document.getElementById("qtdMin");
     const valorInput = document.getElementById("valor");
 
+    if (!nomeInput.value || !cateegoriaInput.value || !qtdInput.value || !qtdMinInput.value || !valorInput.value) {
+        alert("Preencha todos os campos obrigatórios!");
+        return;
+    }
+
+    if(qtdInput.value < 0){
+        alert("A quantidade de produtos em estoque não pode ser negativo!");
+        return;
+    }
+
+    if(qtdMinInput.value <= 0){
+        alert("O estoque mínimo desejado não pode ser zero ou negativo!");
+        return;
+    }
+
+    if(valorInput.value <= 0){
+        alert("O preço unitário não pode ser zero ou negativo!");
+        return;
+    }
+
     const novoItem = {
         ID: id,
         nome: nomeInput.value,
