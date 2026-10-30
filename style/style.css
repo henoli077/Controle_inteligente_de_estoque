@@ -8,6 +8,14 @@ div {
     padding-top: 10px;
 }
 
+.header-app {
+    background: #2c3e50;
+    color: white;
+    padding: 20px;
+    border-radius: 15px 15px 0px 0px;
+    text-align: center;
+}
+
 .main-card {
     border: none;
     border-radius: 0px 0px 15px 15px;
