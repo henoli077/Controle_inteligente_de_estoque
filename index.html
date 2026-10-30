@@ -18,7 +18,87 @@
             </h1>
         </header>
         <div class="main-card">
-            
+            <div>
+                <div>
+                    <label>Nome</label>
+                    <div>
+                        <input type="text" id="nome" placeholder="Ex: ">
+                    </div>
+                </div>
+            </div>
+            <div>
+                <div>
+                    <label>Categoria</label>
+                    <div>
+                        <input type="text" id="categoria" placeholder="Ex: ">
+                    </div>
+                </div>
+            </div>
+            <div>
+                <label>Quantidade em estoque</label>
+                <div>
+                    <input type="number" id="qtd" placeholder="0">
+                </div>
+            </div>
+            <div>
+                <label>Estoque mínimo desejado</label>
+                <div>
+                    <input type="number" id="qtdMin" placeholder="0">
+                </div>
+            </div>
+            <div>
+                <label>Preço unitário</label>
+                <div>
+                    <input type="number" id="valor" placeholder="0.00">
+                </div>
+            </div>
+            <div>
+                <button onclick="adicionaDados()" class="btn-add">
+                    Adicionar
+                </button>
+                <button onclick="botaoCancelar()" class="btn-clear">
+                    Limpar
+                </button>
+                <button onclick="deletaLista()" class="btn-delete-all">
+                    Deletar Lista
+                </button>
+            </div>
+            <div>
+                <table id="listaTab">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>nome</th>
+                            <th>categoria</th>
+                            <th>Qtd.</th>
+                            <th>Status</th>
+                            <th>Preço Unit.</th>
+                            <th>Valor total em estoque</th>
+                            <th>Ação</th>
+                        </tr>
+                    </thead>
+                    <tbody id="table-body">
+                        <tr>
+                            <td colspan="5">
+                                Nenhum item na lista
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div id="total-produtos-container">
+                Total de produtos cadastrados: <span>0</span>
+            </div>
+            <div id="produtos-sem-estoque-container">
+                Produtos sem estoque: <span>0</span>
+            </div>
+            <div id="produtos-estoque-critico-container">
+                Produtos com estoque crítico: <span>0</span>
+            </div>
+            <div id="total-container">
+                Valor total em estoque: <span>R$ 0,00</span>
+            </div>
         </div>
     </center>
+    <script src="js/main.js"></script>
 </body>
