@@ -47,6 +47,19 @@ function adicionaDados() {
     botaoCancelar();
 }
 
+function renderizarTabela() {
+    const tbody = document.getElementById("table-body");
+    tbody.innerHTML = "";
+    let valorTotalGeral = 0;
+    let cadastrados = 0;
+    let semEstoque = 0;
+    let estoqueCritico = 0;
+
+    if (listaEstoque.length === 0) {
+        tbody.innerHTML = '<tr><td colspan="8">Nenhum item na lista</td></tr>';
+    }
+}
+
 function salvarNoStorage() {
     localStorage.setItem("itens_compra", JSON.stringify(listaEstoque));
     localStorage.setItem("id", JSON.stringify(id));
