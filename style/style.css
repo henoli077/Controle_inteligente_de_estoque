@@ -21,6 +21,14 @@ th, td, tr {
     text-align: center;
 }
 
+.card {
+    background-color: white;
+    width: 300px;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px #0002;
+}
+
 .main-card {
     border: none;
     border-radius: 0px 0px 15px 15px;

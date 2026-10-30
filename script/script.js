@@ -62,6 +62,7 @@ function renderizarTabela() {
     listaEstoque.forEach((item, index) => {
         const subtotal = item.qtd * item.valor;
         valorTotalGeral += subtotal;
+        let situacao;
 
         if(item.qtd > item.qtdMin){
             situacao = "Estoque normal";
@@ -85,7 +86,7 @@ function renderizarTabela() {
         <td>R$ ${item.valor.toLocaleString('pt-BR', {minimumFractionDigits: 2})}</td>
         <td>R$ ${subtotal.toLocaleString('pt-BR', {minimumFractionDigits: 2})}</td>
         <td>
-        <button onclick="editarItem(${index}) class="btn-edit">
+        <button onclick="editarItem(${index})" class="btn-edit">
             Editar
         </button>
         <button onclick="removerItem(${index})" class="btn-delete-all">
@@ -130,6 +131,106 @@ function removerItem(index) {
         salvarNoStorage();
         renderizarTabela();
     }
+}
+
+function editarItem(index) {
+    const item = listaEstoque[index];
+    const card = document.getElementById("card");
+    card.hidden = false;
+    card.innerHTML = 
+    `<div>
+        <h2>EDITAR</h2>
+        <div>
+            <label>Nome</label>
+            <div>
+                <input type="text" id="nomeEdicao" value="${item.nome}">
+            </div>
+        </div>
+    </div>
+    <div>
+        <div>
+            <label>Categoria</label>
+            <div>
+                <input type="text" id="categoriaEdicao" value="${item.categoria}">
+            </div>
+        </div>
+    </div>
+    <div>
+        <label>Quantidade em estoque</label>
+        <div>
+            <input type="number" id="qtdEdicao" value="${item.qtd}">
+        </div>
+    </div>
+    <div>
+        <label>Estoque mínimo desejado</label>
+        <div>
+            <input type="number" id="qtdMinEdicao" value="${item.qtdMin}">
+        </div>
+    </div>
+    <div>
+        <label>Preço unitário</label>
+        <div>
+            <input type="number" id="valorEdicao" value="${item.valor}">
+        </div>
+    </div>
+    <div>
+        <button onclick="salvarEdicao(${index})" class="btn-add">Salvar</button>
+        <button onclick="cancelarEdicao()" class="btn-delete-all">Cancelar</button>
+    </div>
+    `;
+    document.getElementById("nomeEdicao").focus();
+}
+
+function salvarEdicao(index) {
+    const nomeInput = document.getElementById("nomeEdicao").value;
+    const cateegoriaInput = document.getElementById("categoriaEdicao").value;
+    const qtdValor = document.getElementById("qtdEdicao").value;
+    const qtdMinValor = document.getElementById("qtdMinEdicao").value;
+    const valorValor = document.getElementById("valorEdicao").value;
+
+    if (nomeInput === "" || cateegoriaInput === "" || qtdValor === "" || qtdMinValor === "" || valorValor === "") {
+        alert("Preencha todos os campos obrigatórios!");
+        return;
+    }
+
+    const qtdInput = Number(qtdValor);
+    const qtdMinInput = Number(qtdMinValor);
+    const valorInput = Number(valorValor);
+    
+    if(qtdInput < 0){
+        alert("A quantidade de produtos em estoque não pode ser negativo!");
+        return;
+    }
+
+    if(qtdMinInput <= 0){
+        alert("O estoque mínimo desejado não pode ser zero ou negativo!");
+        return;
+    }
+
+    if(valorInput <= 0){
+        alert("O preço unitário não pode ser zero ou negativo!");
+        return;
+    }
+
+    const itemEditado = {
+        ID: listaEstoque[index].ID,
+        nome: nomeInput,
+        categoria: cateegoriaInput,
+        qtd: qtdInput,
+        qtdMin: qtdMinInput,
+        valor: valorInput
+    };
+
+    listaEstoque[index] = itemEditado;
+
+    document.getElementById("card").hidden = true;
+    
+    salvarNoStorage();
+    renderizarTabela();
+}
+
+function cancelarEdicao(){
+    document.getElementById("card").hidden = true;
 }
 
 function deletaLista() {
