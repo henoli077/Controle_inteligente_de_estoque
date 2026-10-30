@@ -1,9 +1,16 @@
 body {
-font-family: 'Poppins', sans-serif;
-background-color: #f0f2f5;
-padding-top: 40px;
+    font-family: 'Poppins', sans-serif;
+    background-color: #f0f2f5;
+    padding-top: 40px;
 }
 
 div {
     padding-top: 10px;
+}
+
+.main-card {
+    border: none;
+    border-radius: 0px 0px 15px 15px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+    background: #ffffff;
 }
