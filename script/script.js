@@ -95,6 +95,20 @@ function renderizarTabela() {
         `;
         tbody.appendChild(tr);
     });
+
+    cadastrados = listaEstoque.length;
+
+    document.getElementById("total-produtos-container").innerHTML = 
+    `Total de produtos cadastrados: <span>${cadastrados}</span>`;
+
+    document.getElementById("produtos-sem-estoque-container").innerHTML = 
+    `Produtos sem estoque: <span>${semEstoque}</span>`;
+
+    document.getElementById("produtos-estoque-critico-container").innerHTML = 
+    `Produtos com estoque crítico: <span>${estoqueCritico}</span>`;
+    
+    document.getElementById("total-container").innerHTML = 
+    `Valor total em estoque: <span>R$ ${valorTotalGeral.toLocaleString('pt-BR', {minimumFractionDigits: 2})}</span>`;
 }
 
 function salvarNoStorage() {
