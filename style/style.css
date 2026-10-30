@@ -8,6 +8,11 @@ div {
     padding-top: 10px;
 }
 
+th, td, tr {
+    text-align: center;
+    padding: 10px;
+}
+
 .header-app {
     background: #2c3e50;
     color: white;
@@ -22,3 +27,27 @@ div {
     box-shadow: 0 10px 30px rgba(0,0,0,0.08);
     background: #ffffff;
 }
+
+.btn-add { background-color: #27ae60; color: white; border: none; }
+.btn-add:hover { background-color: #219150; color: white; }
+
+.btn-clear { background-color: #f39c12; color: white; border: none; }
+.btn-clear:hover { background-color: #d68910; color: white; }
+
+.btn-edit { background-color: #2290c4; color: white; border: none; }
+.btn-edit:hover { background-color: #1d77a1; color: white; }
+
+.btn-delete-all { background-color: #e74c3c; color: white; border: none; }
+.btn-delete-all:hover { background-color: #c0392b; color: white; }
+
+.table thead { background-color: #ecf0f1; }
+
+.total-display {
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: #2c3e50;
+    border-top: 2px solid #ecf0f1;
+    padding-top: 15px;
+}
+
+.empty-msg { color: #bdc3c7; font-style: italic; }
